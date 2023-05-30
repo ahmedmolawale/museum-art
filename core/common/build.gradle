@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+apply from: "$project.rootDir/ktlint.gradle"
+
+dependencies {
+    implementation Dependencies.javaxInject
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
