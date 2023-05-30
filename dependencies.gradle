@@ -1,0 +1,79 @@
+ext {
+    AndroidSdk = [
+            compileSdk: 33,
+            targetSdk : 33,
+            minSdk    : 21,
+            buildTools: "32.0.0"
+    ]
+
+    LibrariesVersion = [
+            agp               : "7.4.2",
+            appCompat         : "1.5.1",
+            fragmentKtx       : "1.5.1",
+            materialDesign    : "1.3.0",
+            androidCore       : "1.3.2",
+            constraintLayout  : "2.0.4",
+            okHTTPLogger      : "4.9.0",
+            retrofit          : "2.9.0",
+            coroutines        : "1.6.4",
+            coil              : "1.1.1",
+            kotlin            : "1.7.0",
+            hilt              : "2.43.2",
+            navigation        : "2.5.3",
+            lottie            : "5.2.0",
+            googlePlayLocation: "21.0.1",
+            javaxInject       : "1"
+    ]
+
+    BuildPlugins = [
+            androidGradlePlugin: "com.android.tools.build:gradle:$LibrariesVersion.agp",
+            kotlinGradlePlugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$LibrariesVersion.kotlin",
+            hiltGradlePlugin   : "com.google.dagger:hilt-android-gradle-plugin:$LibrariesVersion.hilt",
+            navigationSafeArgsPlugin: "androidx.navigation:navigation-safe-args-gradle-plugin:$LibrariesVersion.navigation"
+    ]
+
+
+    AndroidClient = [
+            appId      : "com.appsfactory.museum",
+            versionCode: 1,
+            versionName: "1.0",
+    ]
+
+
+    Dependencies = [
+            hilt                 : "com.google.dagger:hilt-android:$LibrariesVersion.hilt",
+            hiltCompiler         : "com.google.dagger:hilt-android-compiler:$LibrariesVersion.hilt",
+            hiltCore             : "com.google.dagger:hilt-core:$LibrariesVersion.hilt",
+            hiltCoreCompiler     : "com.google.dagger:hilt-compiler:$LibrariesVersion.hilt",
+            appCompat            : "androidx.appcompat:appcompat:$LibrariesVersion.appCompat",
+            fragmentKTX          : "androidx.fragment:fragment-ktx:$LibrariesVersion.fragmentKtx",
+            androidCore          : "androidx.core:core-ktx:$LibrariesVersion.androidCore",
+            materialDesign       : "com.google.android.material:material:$LibrariesVersion.materialDesign",
+            constraintLayout     : "androidx.constraintlayout:constraintlayout:$LibrariesVersion.constraintLayout",
+            coil                 : "io.coil-kt:coil:$LibrariesVersion.coil",
+            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib:$LibrariesVersion.kotlin",
+            javaxInject          : "javax.inject:javax.inject:$LibrariesVersion.javaxInject",
+            retrofit             : "com.squareup.retrofit2:retrofit:$LibrariesVersion.retrofit",
+            retrofitMoshi        : "com.squareup.retrofit2:converter-moshi:$LibrariesVersion.retrofit",
+            okHTTPLogger         : "com.squareup.okhttp3:logging-interceptor:$LibrariesVersion.okHTTPLogger",
+            coroutinesCore       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$LibrariesVersion.coroutines",
+            navigationFragmentKTX: "androidx.navigation:navigation-fragment-ktx:$LibrariesVersion.navigation",
+            navigationUIKTX      : "androidx.navigation:navigation-ui-ktx:$LibrariesVersion.navigation",
+            lottie               : "com.airbnb.android:lottie:$LibrariesVersion.lottie",
+            googlePlayLocation   : "com.google.android.gms:play-services-location:$LibrariesVersion.googlePlayLocation"
+    ]
+
+    TestLibrariesVersion = [
+            jUnit        : "4.13.1",
+            truth        : "1.1",
+            coroutines   : "1.4.2",
+            mockWebServer: "4.9.0",
+    ]
+
+    TestLibraries = [
+            junit        : "junit:junit:$TestLibrariesVersion.jUnit",
+            truth        : "com.google.truth:truth:$TestLibrariesVersion.truth",
+            coroutines   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$TestLibrariesVersion.coroutines",
+            mockWebServer: "com.squareup.okhttp3:mockwebserver:$TestLibrariesVersion.mockWebServer"
+    ]
+}

@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+}
+
+apply from: "$project.rootDir/ktlint.gradle"
+
+android {
+
+    namespace AndroidClient.appId
+    compileSdkVersion AndroidSdk.compileSdk
+    buildToolsVersion AndroidSdk.buildTools
+    defaultConfig {
+        applicationId AndroidClient.appId
+        minSdkVersion AndroidSdk.minSdk
+        targetSdkVersion AndroidSdk.targetSdk
+        versionCode AndroidClient.versionCode
+        versionName AndroidClient.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "MET_MUSEUM_BASE_URL", "\"https://collectionapi.metmuseum.org/public/collection/v1/\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+//    implementation(project(':core:domain'))
+//    implementation(project(':core:common'))
+//    implementation(project(':core:data'))
+//    implementation(project(':core:remote'))
+
+    implementation Dependencies.androidCore
+    implementation Dependencies.fragmentKTX
+    implementation Dependencies.appCompat
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.kotlin
+    implementation Dependencies.navigationFragmentKTX
+    implementation Dependencies.navigationUIKTX
+    implementation Dependencies.lottie
+    implementation Dependencies.googlePlayLocation
+
+    //Material
+    implementation Dependencies.materialDesign
+
+    //hilt for DI
+    implementation Dependencies.hilt
+    kapt Dependencies.hiltCompiler
+
+    //image loading
+    implementation Dependencies.coil
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.truth
+    testImplementation TestLibraries.coroutines
+}
