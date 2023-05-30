@@ -1,5 +1,6 @@
 package com.appsfactory.data.contract
 
+import com.appsfactory.common.Result
 import com.appsfactory.data.model.ArtIdEntity
 
 
