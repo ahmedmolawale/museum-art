@@ -1,7 +1,12 @@
 package com.appsfactory.remote.di
 
 import com.appsfactory.common.di.MetMuseumBaseUrl
+import com.appsfactory.data.contract.ArtDetailsRemote
+import com.appsfactory.data.contract.ArtSearchRemote
 import com.appsfactory.remote.apiservice.ArtApiService
+import com.appsfactory.remote.contractimpl.ArtDetailsRemoteImpl
+import com.appsfactory.remote.contractimpl.ArtSearchRemoteImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +23,16 @@ private const val DEFAULT_READ_WRITE_TIMEOUT_IN_SECONDS = 30L
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface ApiModule {
+
+    @Binds
+    fun bindArtSearchRemote(
+        artSearchRemoteImpl: ArtSearchRemoteImpl
+    ): ArtSearchRemote
+
+    @Binds
+    fun bindArtDetailsRemote(
+        artDetailsRemoteImpl: ArtDetailsRemoteImpl
+    ): ArtDetailsRemote
 
     companion object {
         @Provides
