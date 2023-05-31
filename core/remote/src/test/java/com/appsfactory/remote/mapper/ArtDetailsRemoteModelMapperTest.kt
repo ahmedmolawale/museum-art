@@ -4,7 +4,6 @@ import com.appsfactory.remote.model.ArtDetailsRemoteModel
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-
 class ArtDetailsRemoteModelMapperTest {
 
     private val artDetailsRemoteModelMapper = ArtDetailsRemoteModelMapper()
@@ -17,7 +16,7 @@ class ArtDetailsRemoteModelMapperTest {
             artistDisplayBio = null,
             primaryImage = "https://img.jpg",
             additionalImages = null,
-            objectName = "abcd"
+            objectName = "abcd",
         )
         val placeEntity = artDetailsRemoteModelMapper.mapFromModel(artDetailsRemoteModel)
         assertThat(placeEntity.title).isEqualTo("abc")
@@ -27,5 +26,4 @@ class ArtDetailsRemoteModelMapperTest {
         assertThat(placeEntity.additionalImages).isEmpty()
         assertThat(placeEntity.objectName).isEqualTo("abcd")
     }
-
 }

@@ -7,7 +7,7 @@ internal class ArtIdRemoteModelMapper @Inject constructor() :
     RemoteModelMapper<Long, ArtIdEntity> {
     override fun mapFromModel(model: Long): ArtIdEntity {
         return ArtIdEntity(
-            model
+            model,
         )
     }
 }

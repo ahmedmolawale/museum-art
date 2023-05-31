@@ -6,8 +6,8 @@ import com.appsfactory.data.contract.ArtDetailsRemote
 import com.appsfactory.data.model.ArtDetailsEntity
 import com.appsfactory.remote.mapper.ArtDetailsRemoteModelMapper
 import com.appsfactory.remote.utils.ART_DETAILS_REQUEST_PATH
+import com.appsfactory.remote.utils.ART_OBJECT_ID
 import com.appsfactory.remote.utils.ArtRequestDispatcher
-import com.appsfactory.remote.utils.OBJECT_ID
 import com.appsfactory.remote.utils.makeTestApiService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
@@ -28,14 +28,15 @@ class ArtDetailsRemoteImplTest {
         mockWebServer.dispatcher = ArtRequestDispatcher().RequestDispatcher()
         mockWebServer.start()
         artDetailsRemote = ArtDetailsRemoteImpl(
-            makeTestApiService(mockWebServer), artDetailsRemoteModelMapper
+            makeTestApiService(mockWebServer),
+            artDetailsRemoteModelMapper,
         )
     }
 
     @Test
     fun `check that getArtDetails returns art details`() = runBlocking {
         val artDetailsResult: Result<ArtDetailsEntity> =
-            artDetailsRemote.getArtDetails(OBJECT_ID)
+            artDetailsRemote.getArtDetails(ART_OBJECT_ID)
         assertThat(artDetailsResult).isInstanceOf(Result.Success::class.java)
         artDetailsResult as Result.Success
         val artDetails: ArtDetailsEntity = artDetailsResult.data
@@ -44,14 +45,14 @@ class ArtDetailsRemoteImplTest {
 
     @Test
     fun `check that calling getArtDetails makes request to correct path`() = runBlocking {
-        artDetailsRemote.getArtDetails(OBJECT_ID)
+        artDetailsRemote.getArtDetails(ART_OBJECT_ID)
         assertThat(ART_DETAILS_REQUEST_PATH)
             .isEqualTo(mockWebServer.takeRequest().path)
     }
 
     @Test
     fun `check that calling getArtDetails makes a GET request`() = runBlocking {
-        artDetailsRemote.getArtDetails(OBJECT_ID)
+        artDetailsRemote.getArtDetails(ART_OBJECT_ID)
         assertThat("GET $ART_DETAILS_REQUEST_PATH HTTP/1.1")
             .isEqualTo(mockWebServer.takeRequest().requestLine)
     }
@@ -61,7 +62,7 @@ class ArtDetailsRemoteImplTest {
         runBlocking {
             mockWebServer.dispatcher = ArtRequestDispatcher().BadRequestDispatcher()
             val artResult: Result<ArtDetailsEntity> =
-                artDetailsRemote.getArtDetails(OBJECT_ID)
+                artDetailsRemote.getArtDetails(ART_OBJECT_ID)
             assertThat(artResult).isInstanceOf(Result.Error::class.java)
             artResult as Result.Error
             assertThat(artResult.failure).isInstanceOf(Failure.ServerError::class.java)
@@ -72,10 +73,9 @@ class ArtDetailsRemoteImplTest {
         runBlocking {
             mockWebServer.dispatcher = ArtRequestDispatcher().ErrorRequestDispatcher()
             val artResult: Result<ArtDetailsEntity> =
-                artDetailsRemote.getArtDetails(OBJECT_ID)
+                artDetailsRemote.getArtDetails(ART_OBJECT_ID)
             assertThat(artResult).isInstanceOf(Result.Error::class.java)
             artResult as Result.Error
             assertThat(artResult.failure).isInstanceOf(Failure.ServerError::class.java)
         }
-
 }

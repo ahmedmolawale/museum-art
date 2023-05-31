@@ -29,7 +29,8 @@ class ArtSearchRemoteImplTest {
         mockWebServer.dispatcher = ArtRequestDispatcher().RequestDispatcher()
         mockWebServer.start()
         artSearchRemote = ArtSearchRemoteImpl(
-            makeTestApiService(mockWebServer), artIdRemoteModelMapper
+            makeTestApiService(mockWebServer),
+            artIdRemoteModelMapper,
         )
     }
 
@@ -57,7 +58,6 @@ class ArtSearchRemoteImplTest {
             .isEqualTo(mockWebServer.takeRequest().requestLine)
     }
 
-
     @Test
     fun `check that searchArtCollection returns proper error on bad response from server`() =
         runBlocking {
@@ -79,7 +79,6 @@ class ArtSearchRemoteImplTest {
             artResult as Result.Error
             assertThat(artResult.failure).isInstanceOf(Failure.ServerError::class.java)
         }
-
 
     @After
     fun tearDown() {

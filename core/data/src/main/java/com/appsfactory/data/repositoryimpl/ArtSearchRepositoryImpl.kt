@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 internal class ArtSearchRepositoryImpl @Inject constructor(
     private val artSearchRemote: ArtSearchRemote,
-    private val artIdEntityMapper: ArtIdEntityMapper
+    private val artIdEntityMapper: ArtIdEntityMapper,
 ) : ArtSearchRepository {
     override fun searchArtCollection(searchTerm: String): Flow<Result<List<ArtId>>> {
         return flow {
@@ -26,5 +26,4 @@ internal class ArtSearchRepositoryImpl @Inject constructor(
             }
         }
     }
-
 }

@@ -12,7 +12,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class ArtSearchRepositoryImplTest {
 
@@ -58,5 +57,4 @@ class ArtSearchRepositoryImplTest {
             assertThat(it.failure).isNotNull()
         }
     }
-
 }

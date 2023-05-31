@@ -8,7 +8,7 @@ internal class ArtIdEntityMapper @Inject constructor() :
     EntityMapper<ArtIdEntity, ArtId> {
     override fun mapToDomain(entity: ArtIdEntity): ArtId {
         return ArtId(
-            value = entity.value
+            value = entity.value,
         )
     }
 }

@@ -4,8 +4,8 @@ import com.appsfactory.common.Failure
 import com.appsfactory.common.Result
 import com.appsfactory.data.contract.ArtDetailsRemote
 import com.appsfactory.data.model.ArtDetailsEntity
+import com.appsfactory.data.model.ArtIdEntity
 import com.appsfactory.data.util.ResponseType
-import com.appsfactory.domain.model.ArtId
 
 internal val artDetailsEntity = ArtDetailsEntity(
     title = "abc",
@@ -13,11 +13,10 @@ internal val artDetailsEntity = ArtDetailsEntity(
     artistDisplayBio = "",
     objectName = "abcd",
     primaryImage = "https://img.png",
-    additionalImages = emptyList()
+    additionalImages = emptyList(),
 )
 
 internal class FakeArtDetailsRemote : ArtDetailsRemote {
-
 
     private var artDetailsResult: Result<ArtDetailsEntity> =
         Result.Success(artDetailsEntity)
@@ -35,7 +34,7 @@ internal class FakeArtDetailsRemote : ArtDetailsRemote {
         }
     }
 
-    override suspend fun getArtDetails(id: ArtId): Result<ArtDetailsEntity> {
+    override suspend fun getArtDetails(id: ArtIdEntity): Result<ArtDetailsEntity> {
         return artDetailsResult
     }
 }

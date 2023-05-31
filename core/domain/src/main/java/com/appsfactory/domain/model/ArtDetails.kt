@@ -6,5 +6,5 @@ data class ArtDetails(
     val displayName: String,
     val displayBio: String,
     val primaryImage: String,
-    val additionalImages: List<String>
+    val additionalImages: List<String>,
 )

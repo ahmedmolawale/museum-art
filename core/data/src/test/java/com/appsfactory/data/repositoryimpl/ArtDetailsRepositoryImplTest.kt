@@ -14,7 +14,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class ArtDetailsRepositoryImplTest {
 
@@ -55,5 +54,4 @@ class ArtDetailsRepositoryImplTest {
             assertThat(it.failure).isNotNull()
         }
     }
-
 }

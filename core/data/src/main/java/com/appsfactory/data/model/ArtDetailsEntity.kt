@@ -6,5 +6,5 @@ data class ArtDetailsEntity(
     val artistDisplayName: String,
     val artistDisplayBio: String,
     val primaryImage: String,
-    val additionalImages: List<String>
+    val additionalImages: List<String>,
 )

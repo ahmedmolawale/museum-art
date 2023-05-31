@@ -26,12 +26,12 @@ internal interface ApiModule {
 
     @Binds
     fun bindArtSearchRemote(
-        artSearchRemoteImpl: ArtSearchRemoteImpl
+        artSearchRemoteImpl: ArtSearchRemoteImpl,
     ): ArtSearchRemote
 
     @Binds
     fun bindArtDetailsRemote(
-        artDetailsRemoteImpl: ArtDetailsRemoteImpl
+        artDetailsRemoteImpl: ArtDetailsRemoteImpl,
     ): ArtDetailsRemote
 
     companion object {
@@ -43,15 +43,15 @@ internal interface ApiModule {
         @Provides
         @Singleton
         fun provideHttpClient(
-            loggingInterceptor: HttpLoggingInterceptor
+            loggingInterceptor: HttpLoggingInterceptor,
         ): OkHttpClient = OkHttpClient.Builder()
             .connectTimeout(
                 DEFAULT_READ_WRITE_TIMEOUT_IN_SECONDS,
-                TimeUnit.SECONDS
+                TimeUnit.SECONDS,
             )
             .readTimeout(
                 DEFAULT_READ_WRITE_TIMEOUT_IN_SECONDS,
-                TimeUnit.SECONDS
+                TimeUnit.SECONDS,
             )
             .addInterceptor(loggingInterceptor)
             .build()
@@ -60,7 +60,7 @@ internal interface ApiModule {
         @Singleton
         fun provideApiService(
             @MetMuseumBaseUrl baseUrl: String,
-            okHttpClient: OkHttpClient
+            okHttpClient: OkHttpClient,
         ): ArtApiService =
             Retrofit.Builder()
                 .baseUrl(baseUrl)
