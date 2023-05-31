@@ -44,10 +44,10 @@ android {
 
 dependencies {
 
-//    implementation(project(':core:domain'))
-//    implementation(project(':core:common'))
-//    implementation(project(':core:data'))
-//    implementation(project(':core:remote'))
+    implementation(project(':core:domain'))
+    implementation(project(':core:common'))
+    implementation(project(':core:data'))
+    implementation(project(':core:remote'))
 
     implementation Dependencies.androidCore
     implementation Dependencies.fragmentKTX
@@ -56,8 +56,6 @@ dependencies {
     implementation Dependencies.kotlin
     implementation Dependencies.navigationFragmentKTX
     implementation Dependencies.navigationUIKTX
-    implementation Dependencies.lottie
-    implementation Dependencies.googlePlayLocation
 
     //Material
     implementation Dependencies.materialDesign

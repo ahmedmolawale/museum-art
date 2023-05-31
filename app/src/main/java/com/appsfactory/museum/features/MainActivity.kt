@@ -1,4 +1,4 @@
-package com.appsfactory.museum
+package com.appsfactory.museum.features
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

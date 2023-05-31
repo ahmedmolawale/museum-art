@@ -20,8 +20,6 @@ ext {
             kotlin            : "1.7.0",
             hilt              : "2.43.2",
             navigation        : "2.5.3",
-            lottie            : "5.2.0",
-            googlePlayLocation: "21.0.1",
             javaxInject       : "1"
     ]
 
@@ -36,7 +34,7 @@ ext {
     AndroidClient = [
             appId      : "com.appsfactory.museum",
             versionCode: 1,
-            versionName: "1.0",
+            versionName: "1.0"
     ]
 
 
@@ -58,9 +56,7 @@ ext {
             okHTTPLogger         : "com.squareup.okhttp3:logging-interceptor:$LibrariesVersion.okHTTPLogger",
             coroutinesCore       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$LibrariesVersion.coroutines",
             navigationFragmentKTX: "androidx.navigation:navigation-fragment-ktx:$LibrariesVersion.navigation",
-            navigationUIKTX      : "androidx.navigation:navigation-ui-ktx:$LibrariesVersion.navigation",
-            lottie               : "com.airbnb.android:lottie:$LibrariesVersion.lottie",
-            googlePlayLocation   : "com.google.android.gms:play-services-location:$LibrariesVersion.googlePlayLocation"
+            navigationUIKTX      : "androidx.navigation:navigation-ui-ktx:$LibrariesVersion.navigation"
     ]
 
     TestLibrariesVersion = [
