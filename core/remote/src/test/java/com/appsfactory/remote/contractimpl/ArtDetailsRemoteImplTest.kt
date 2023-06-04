@@ -12,6 +12,7 @@ import com.appsfactory.remote.utils.makeTestApiService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockWebServer
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
@@ -78,4 +79,9 @@ class ArtDetailsRemoteImplTest {
             artResult as Result.Error
             assertThat(artResult.failure).isInstanceOf(Failure.ServerError::class.java)
         }
+
+    @After
+    fun tearDown() {
+        mockWebServer.shutdown()
+    }
 }

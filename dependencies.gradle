@@ -2,8 +2,7 @@ ext {
     AndroidSdk = [
             compileSdk: 33,
             targetSdk : 33,
-            minSdk    : 21,
-            buildTools: "32.0.0"
+            minSdk    : 21
     ]
 
     LibrariesVersion = [

@@ -13,7 +13,6 @@ android {
 
     namespace AndroidClient.appId
     compileSdkVersion AndroidSdk.compileSdk
-    buildToolsVersion AndroidSdk.buildTools
     defaultConfig {
         applicationId AndroidClient.appId
         minSdkVersion AndroidSdk.minSdk
@@ -39,9 +38,6 @@ android {
     }
     viewBinding {
         enabled = true
-    }
-    buildFeatures {
-        viewBinding true
     }
 }
 
