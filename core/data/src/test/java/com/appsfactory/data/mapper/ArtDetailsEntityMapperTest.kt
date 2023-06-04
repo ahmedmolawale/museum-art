@@ -12,16 +12,16 @@ class ArtDetailsEntityMapperTest {
     fun `check that mapFromModel returns correct data`() {
         val artDetailsEntity = ArtDetailsEntity(
             title = "abc",
-            artistDisplayName = "a",
-            artistDisplayBio = "abc",
+            creditLine = "a",
+            department = "abc",
             primaryImage = "https://img.jpg",
             additionalImages = emptyList(),
             objectName = "abcd",
         )
         val placeEntity = artDetailsEntityMapper.mapToDomain(artDetailsEntity)
         assertThat(placeEntity.title).isEqualTo("abc")
-        assertThat(placeEntity.displayName).isEqualTo("a")
-        assertThat(placeEntity.displayBio).isEqualTo("abc")
+        assertThat(placeEntity.credit).isEqualTo("a")
+        assertThat(placeEntity.department).isEqualTo("abc")
         assertThat(placeEntity.primaryImage).isEqualTo("https://img.jpg")
         assertThat(placeEntity.additionalImages).isEmpty()
         assertThat(placeEntity.headline).isEqualTo("abcd")

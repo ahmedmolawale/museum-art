@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:paddingTop="8dp">
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -23,8 +22,7 @@
         android:inputType="text"
         android:maxLength="140"
         android:maxLines="1"
-        android:textColor="@color/white"
-        android:textColorHint="@color/grey"
+        android:textColor="@color/dark_grey"
         android:textCursorDrawable="@null"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +51,7 @@
         android:gravity="center"
         android:text="@string/no_arts"
         android:textAllCaps="false"
-        android:textColor="@color/light_grey"
+        android:textColor="@color/light_gray"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +67,7 @@
         android:fontFamily="@font/circularstdbook"
         android:gravity="center"
         android:text="@string/arts_error"
-        android:textColor="@color/light_grey"
+        android:textColor="@color/light_gray"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

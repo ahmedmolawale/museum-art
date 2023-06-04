@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appsfactory.domain.model.ArtId
+import com.appsfactory.museum.R
 import com.appsfactory.museum.databinding.FragmentArtsBinding
 import com.appsfactory.museum.features.arts.ArtSearchViewModel.UiStateModel
 import com.appsfactory.museum.features.arts.ArtSearchViewModel.UiStateModel.ArtCollection
@@ -24,6 +26,8 @@ import com.appsfactory.museum.features.hide
 import com.appsfactory.museum.features.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+
+const val ART_ID_ARG = "artId"
 
 @AndroidEntryPoint
 class ArtFragment : Fragment() {
@@ -117,6 +121,7 @@ class ArtFragment : Fragment() {
     }
 
     private fun artClicked(artId: ArtId) {
-        Toast.makeText(context, "Clicked ${artId.value}", Toast.LENGTH_SHORT).show()
+        val bundle = bundleOf(ART_ID_ARG to artId.value)
+        findNavController().navigate(R.id.action_art_to_details_fragment, bundle)
     }
 }

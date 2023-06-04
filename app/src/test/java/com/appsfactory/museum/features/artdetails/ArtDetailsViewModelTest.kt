@@ -1,14 +1,13 @@
 package com.appsfactory.museum.features.artdetails
 
-import com.appsfactory.domain.model.ArtId
+import com.appsfactory.museum.MainDispatcherRule
+import com.appsfactory.museum.ResponseType
 import com.appsfactory.museum.fakes.FakeArtDetailsRepository
 import com.appsfactory.museum.features.artdetails.ArtDetailsViewModel.UiStateModel
 import com.appsfactory.museum.features.artdetails.ArtDetailsViewModel.UiStateModel.ArtDetailsSuccess
 import com.appsfactory.museum.features.artdetails.ArtDetailsViewModel.UiStateModel.EndLoading
 import com.appsfactory.museum.features.artdetails.ArtDetailsViewModel.UiStateModel.Error
 import com.appsfactory.museum.features.artdetails.ArtDetailsViewModel.UiStateModel.StartLoading
-import com.appsfactory.museum.MainDispatcherRule
-import com.appsfactory.museum.ResponseType
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
@@ -37,7 +36,7 @@ class ArtDetailsViewModelTest {
         fakeArtDetailsRepository = FakeArtDetailsRepository()
         artDetailsViewModel = ArtDetailsViewModel(
             fakeArtDetailsRepository,
-            ArtId(1),
+            artId = 1,
         )
     }
 

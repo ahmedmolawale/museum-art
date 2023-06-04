@@ -20,14 +20,17 @@ class ArtSearchViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiStateModel>(UiStateModel.Default)
     val uiState: StateFlow<UiStateModel> = _uiState.asStateFlow()
 
+    private var lastSearchedTerm: String? = null
+
     fun getArtCollection(searchQuery: String) {
-        if (searchQuery.length < 3) return
+        if (searchQuery == lastSearchedTerm || searchQuery.length < 3) return
         _uiState.value = UiStateModel.StartLoading
         viewModelScope.launch {
             artSearchRepository.searchArtCollection(searchQuery).collect {
                 _uiState.value = UiStateModel.EndLoading
                 when (it) {
                     is Result.Success -> {
+                        lastSearchedTerm = searchQuery
                         _uiState.value = if (it.data.isEmpty()) {
                             UiStateModel.EmptyArtCollection
                         } else {

@@ -1,12 +1,14 @@
 package com.appsfactory.museum.features.artdetails
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.appsfactory.common.Result
 import com.appsfactory.domain.model.ArtDetails
 import com.appsfactory.domain.model.ArtId
 import com.appsfactory.domain.repository.ArtDetailsRepository
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,14 +17,14 @@ import kotlinx.coroutines.launch
 
 class ArtDetailsViewModel @AssistedInject constructor(
     private val artDetailsRepository: ArtDetailsRepository,
-    @Assisted private val artId: ArtId,
+    @Assisted private val artId: Long,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiStateModel>(UiStateModel.Default)
     val uiState: StateFlow<UiStateModel> = _uiState.asStateFlow()
 
     init {
-        getArtDetails(artId)
+        getArtDetails(ArtId(artId))
     }
 
     private fun getArtDetails(artId: ArtId) {
@@ -32,7 +34,25 @@ class ArtDetailsViewModel @AssistedInject constructor(
                 _uiState.value = UiStateModel.EndLoading
                 when (it) {
                     is Result.Success -> {
-                        _uiState.value = UiStateModel.ArtDetailsSuccess(it.data)
+                        val detailsItems = mutableListOf<ArtDetailsItem>()
+                        detailsItems.add(
+                            ArtDetailsItem.ArticleOverview(
+                                ArtDetailsOverview(
+                                    it.data.credit,
+                                    it.data.title,
+                                ),
+                            ),
+                        )
+                        if (it.data.additionalImages.isNotEmpty()) {
+                            detailsItems.add(ArtDetailsItem.Header)
+                            it.data.additionalImages.forEach { image ->
+                                detailsItems.add(ArtDetailsItem.AdditionalImage(image))
+                            }
+                        }
+                        _uiState.value = UiStateModel.ArtDetailsSuccess(
+                            it.data,
+                            detailsItems,
+                        )
                     }
 
                     is Result.Error -> {
@@ -52,8 +72,26 @@ class ArtDetailsViewModel @AssistedInject constructor(
 
         data class ArtDetailsSuccess(
             val artDetails: ArtDetails,
+            val artDetailsItem: List<ArtDetailsItem>,
         ) : UiStateModel
 
         object Error : UiStateModel
+    }
+
+    @AssistedFactory
+    interface ArtDetailsViewModelFactory {
+        fun create(artId: Long): ArtDetailsViewModel
+
+        @Suppress("UNCHECKED_CAST")
+        companion object {
+            fun providesFactory(
+                assistedFactory: ArtDetailsViewModelFactory,
+                artId: Long,
+            ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    return assistedFactory.create(artId) as T
+                }
+            }
+        }
     }
 }

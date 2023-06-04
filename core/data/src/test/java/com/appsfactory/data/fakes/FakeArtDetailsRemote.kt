@@ -9,8 +9,8 @@ import com.appsfactory.data.util.ResponseType
 
 internal val artDetailsEntity = ArtDetailsEntity(
     title = "abc",
-    artistDisplayName = "ola",
-    artistDisplayBio = "",
+    creditLine = "ola",
+    department = "",
     objectName = "abcd",
     primaryImage = "https://img.png",
     additionalImages = emptyList(),

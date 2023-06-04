@@ -11,8 +11,8 @@ internal class ArtDetailsRemoteModelMapper @Inject constructor() :
             title = model.title.orEmpty(),
             primaryImage = model.primaryImage.orEmpty(),
             additionalImages = model.additionalImages ?: emptyList(),
-            artistDisplayBio = model.artistDisplayBio.orEmpty(),
-            artistDisplayName = model.artistDisplayName.orEmpty(),
+            creditLine = model.creditLine.orEmpty(),
+            department = model.department.orEmpty(),
             objectName = model.objectName.orEmpty(),
         )
     }

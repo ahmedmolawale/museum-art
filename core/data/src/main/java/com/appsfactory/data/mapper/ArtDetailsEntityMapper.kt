@@ -10,8 +10,8 @@ internal class ArtDetailsEntityMapper @Inject constructor() :
         return ArtDetails(
             title = entity.title,
             headline = entity.objectName,
-            displayName = entity.artistDisplayName,
-            displayBio = entity.artistDisplayBio,
+            credit = entity.creditLine,
+            department = entity.department,
             primaryImage = entity.primaryImage,
             additionalImages = entity.additionalImages,
         )

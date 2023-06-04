@@ -12,16 +12,16 @@ class ArtDetailsRemoteModelMapperTest {
     fun `check that mapFromModel returns correct data`() {
         val artDetailsRemoteModel = ArtDetailsRemoteModel(
             title = "abc",
-            artistDisplayName = null,
-            artistDisplayBio = null,
+            creditLine = null,
+            department = null,
             primaryImage = "https://img.jpg",
             additionalImages = null,
             objectName = "abcd",
         )
         val placeEntity = artDetailsRemoteModelMapper.mapFromModel(artDetailsRemoteModel)
         assertThat(placeEntity.title).isEqualTo("abc")
-        assertThat(placeEntity.artistDisplayName).isEmpty()
-        assertThat(placeEntity.artistDisplayBio).isEmpty()
+        assertThat(placeEntity.creditLine).isEmpty()
+        assertThat(placeEntity.department).isEmpty()
         assertThat(placeEntity.primaryImage).isEqualTo("https://img.jpg")
         assertThat(placeEntity.additionalImages).isEmpty()
         assertThat(placeEntity.objectName).isEqualTo("abcd")

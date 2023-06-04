@@ -16,8 +16,8 @@ class FakeArtDetailsRepository : ArtDetailsRepository {
             Result.Success(
                 ArtDetails(
                     title = "abc",
-                    displayBio = "Zeus",
-                    displayName = "Kafka",
+                    credit = "Zeus",
+                    department = "Kafka",
                     additionalImages = emptyList(),
                     primaryImage = "https://img.jpg",
                     headline = "",

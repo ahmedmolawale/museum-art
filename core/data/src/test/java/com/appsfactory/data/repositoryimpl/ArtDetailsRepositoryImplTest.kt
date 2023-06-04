@@ -38,8 +38,8 @@ class ArtDetailsRepositoryImplTest {
             val artDetails: ArtDetails = it.data
             assertThat(artDetails.headline).isEqualTo(artDetailsEntity.objectName)
             assertThat(artDetails.title).isEqualTo(artDetailsEntity.title)
-            assertThat(artDetails.displayBio).isEqualTo(artDetailsEntity.artistDisplayBio)
-            assertThat(artDetails.displayName).isEqualTo(artDetailsEntity.artistDisplayName)
+            assertThat(artDetails.credit).isEqualTo(artDetailsEntity.creditLine)
+            assertThat(artDetails.department).isEqualTo(artDetailsEntity.department)
             assertThat(artDetails.primaryImage).isEqualTo(artDetailsEntity.primaryImage)
             assertThat(artDetails.additionalImages).isEqualTo(artDetailsEntity.additionalImages)
         }
