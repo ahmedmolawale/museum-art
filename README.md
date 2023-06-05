@@ -102,7 +102,7 @@ The project uses ktlint to enforce proper code style.
 
 ## Demo
 
-Find below screenshots of the application or check the project top level `images` folder.
+Find below screenshots of the application
 
-|<img src="images/screen_1.png" width=200/>|<img src="images/screen_2.png" width=200/>|
-|:----:|:----:|
+| <img src="images/image_1.png" width=200/> | <img src="images/image_2.png" width=200/> |
+|:-----------------------------------------:|:-----------------------------------------:|
